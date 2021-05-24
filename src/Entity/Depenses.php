@@ -33,13 +33,13 @@ class Depenses
     private $beneficiaire;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Members::class, inversedBy="Depenses")
+     * @ORM\ManyToOne(targetEntity=Members::class, inversedBy="Depenses", cascade={"persist"})
      * @ORM\JoinColumn(nullable=false)
      */
     private $member;
 
     /**
-     * @ORM\ManyToOne(targetEntity=CathegoriesDepenses::class, inversedBy="depenses")
+     * @ORM\ManyToOne(targetEntity=CathegoriesDepenses::class, inversedBy="depenses", cascade={"persist"})
      * @ORM\JoinColumn(nullable=false)
      */
     private $CathegorieDepense;

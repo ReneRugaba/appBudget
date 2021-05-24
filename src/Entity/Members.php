@@ -31,17 +31,17 @@ class Members extends User
     private $prenom;
 
     /**
-     * @ORM\OneToMany(targetEntity=Revenu::class, mappedBy="Member", orphanRemoval=true)
+     * @ORM\OneToMany(targetEntity=Revenu::class, mappedBy="Member", orphanRemoval=true, cascade={"persist"})
      */
     private $Revenu;
 
     /**
-     * @ORM\OneToMany(targetEntity=Depenses::class, mappedBy="member", orphanRemoval=true)
+     * @ORM\OneToMany(targetEntity=Depenses::class, mappedBy="member", orphanRemoval=true, cascade={"persist"})
      */
     private $Depenses;
 
     /**
-     * @ORM\OneToMany(targetEntity=Soldes::class, mappedBy="member", orphanRemoval=true)
+     * @ORM\OneToMany(targetEntity=Soldes::class, mappedBy="member", orphanRemoval=true, cascade={"persist"})
      */
     private $soldes;
 
@@ -62,7 +62,7 @@ class Members extends User
         return $this->nom;
     }
 
-    public function setNom(string $nom): self
+    public function setNom(?string $nom): self
     {
         $this->nom = $nom;
 
@@ -74,7 +74,7 @@ class Members extends User
         return $this->prenom;
     }
 
-    public function setPrenom(string $prenom): self
+    public function setPrenom(?string $prenom): self
     {
         $this->prenom = $prenom;
 

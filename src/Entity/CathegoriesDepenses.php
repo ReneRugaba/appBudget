@@ -25,7 +25,7 @@ class CathegoriesDepenses
     private $nom;
 
     /**
-     * @ORM\OneToMany(targetEntity=Depenses::class, mappedBy="CathegorieDepense", orphanRemoval=true)
+     * @ORM\OneToMany(targetEntity=Depenses::class, mappedBy="CathegorieDepense", orphanRemoval=true,cascade={"persist"})
      */
     private $depenses;
 
@@ -44,7 +44,7 @@ class CathegoriesDepenses
         return $this->nom;
     }
 
-    public function setNom(string $nom): self
+    public function setNom(?string $nom): self
     {
         $this->nom = $nom;
 
@@ -54,12 +54,12 @@ class CathegoriesDepenses
     /**
      * @return Collection|Depenses[]
      */
-    public function getDepenses(): Collection
+    public function getDepenses(): ?Collection
     {
         return $this->depenses;
     }
 
-    public function addDepense(Depenses $depense): self
+    public function addDepense(?Depenses $depense): self
     {
         if (!$this->depenses->contains($depense)) {
             $this->depenses[] = $depense;
@@ -69,7 +69,7 @@ class CathegoriesDepenses
         return $this;
     }
 
-    public function removeDepense(Depenses $depense): self
+    public function removeDepense(?Depenses $depense): self
     {
         if ($this->depenses->removeElement($depense)) {
             // set the owning side to null (unless already changed)
