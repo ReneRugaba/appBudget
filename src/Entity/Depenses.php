@@ -66,7 +66,7 @@ class Depenses
         return $this->datePaiement;
     }
 
-    public function setDatePaiement(\DateTimeInterface $datePaiement): self
+    public function setDatePaiement(?\DateTimeInterface $datePaiement): self
     {
         $this->datePaiement = $datePaiement;
 
@@ -78,7 +78,7 @@ class Depenses
         return $this->beneficiaire;
     }
 
-    public function setBeneficiaire(string $beneficiaire): self
+    public function setBeneficiaire(?string $beneficiaire): self
     {
         $this->beneficiaire = $beneficiaire;
 
