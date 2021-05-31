@@ -39,19 +39,19 @@ class Revenu
      * @ORM\ManyToOne(targetEntity=Members::class, inversedBy="Revenu")
      * @ORM\JoinColumn(nullable=false)
      */
-    private $member;
+    private ?Members $member;
 
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getMontant(): ?int
+    public function getMontant(): ?float
     {
         return $this->montant;
     }
 
-    public function setMontant(int $montant): self
+    public function setMontant(float $montant): self
     {
         $this->montant = $montant;
 
@@ -63,7 +63,7 @@ class Revenu
         return $this->dateReception;
     }
 
-    public function setDateReception(\DateTimeInterface $dateReception): self
+    public function setDateReception(?\DateTimeInterface $dateReception): self
     {
         $this->dateReception = $dateReception;
 
