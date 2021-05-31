@@ -9,7 +9,7 @@ use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 
 class DepensesTest extends KernelTestCase
 {
-    public function getDepenses($montant=null,$datePaiment=null, $beneficiaire=null,?Members $members){
+    public function getDepenses($montant=null,$datePaiment=null, $beneficiaire=null,?Members $members=null){
         return (new Depenses)->setMontant($montant)->setDatePaiement($datePaiment)
                                 ->setBeneficiaire($beneficiaire)->setMember($members);
     }

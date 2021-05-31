@@ -4,6 +4,7 @@ namespace App\Security;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Validator\Constraints as Assert;
 
 
 /**
@@ -13,28 +14,30 @@ class User implements UserInterface
 {
     /** 
      * @ORM\Column(type="string", length=100)
-     *
+     * @Assert\Regex("/^[a-zA-Z0-9_.-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/")
      */
-    protected $email;
+    protected ?string $email;
 
 
     /**
      * @ORM\Column(type="json")
      */
-    protected $roles = [];
+    protected ?array $roles = [];
+
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\Regex("/^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[-+!*$@%_])([-+!*$@%_\w]{8,15})$/")
      * @var string The hashed password
      */
-    protected $password;
+    protected ?string $password;
 
     public function getEmail(): ?string
     {
         return $this->email;
     }
 
-    public function setEmail(string $email): self
+    public function setEmail(?string $email): self
     {
         $this->email = $email;
 
@@ -46,7 +49,7 @@ class User implements UserInterface
      *
      * @see UserInterface
      */
-    public function getUsername(): string
+    public function getUsername(): ?string
     {
         return (string) $this->email;
     }
@@ -73,12 +76,12 @@ class User implements UserInterface
     /**
      * @see UserInterface
      */
-    public function getPassword(): string
+    public function getPassword(): ?string
     {
         return $this->password;
     }
 
-    public function setPassword(string $password): self
+    public function setPassword(?string $password): self
     {
         $this->password = $password;
 
