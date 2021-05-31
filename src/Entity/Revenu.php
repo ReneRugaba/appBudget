@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Repository\MontantRepository;
+use DateTimeInterface;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -15,23 +16,23 @@ class Revenu
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
      */
-    private $id;
+    private ?int $id;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="float")
      */
-    private $montant;
+    private ?float $montant;
 
     /**
      * @ORM\Column(type="date")
      */
-    private $dateReception;
+    private ?DateTimeInterface $dateReception;
 
     /**
      * @ORM\ManyToOne(targetEntity=TypeRevenus::class, inversedBy="Member", cascade={"persist"})
      * @ORM\JoinColumn(nullable=false)
      */
-    private $typeRevenu;
+    private ?TypeRevenus $typeRevenu;
 
 
     /**

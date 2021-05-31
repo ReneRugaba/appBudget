@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Repository\SoldesRepository;
+use DateTimeInterface;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -15,27 +16,27 @@ class Soldes
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
      */
-    private $id;
+    private ?int $id;
 
     /**
      * @ORM\Column(type="float")
      */
-    private $RevenuTotal;
+    private ?float $RevenuTotal;
 
     /**
      * @ORM\Column(type="float")
      */
-    private $depenseTotal;
+    private ?float $depenseTotal;
 
     /**
      * @ORM\Column(type="date")
      */
-    private $dateDebut;
+    private ?DateTimeInterface $dateDebut;
 
     /**
      * @ORM\Column(type="date")
      */
-    private $dateFin;
+    private ?DateTimeInterface $dateFin;
 
     /**
      * @ORM\ManyToOne(targetEntity=Members::class, inversedBy="soldes")
@@ -89,7 +90,7 @@ class Soldes
         return $this->dateFin;
     }
 
-    public function setDateFin(\DateTimeInterface $dateFin): self
+    public function setDateFin(?\DateTimeInterface $dateFin): self
     {
         $this->dateFin = $dateFin;
 

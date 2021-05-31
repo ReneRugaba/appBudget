@@ -17,17 +17,17 @@ class CathegoriesDepenses
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
      */
-    private $id;
+    private ?int $id;
 
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $nom;
+    private ?string $nom;
 
     /**
      * @ORM\OneToMany(targetEntity=Depenses::class, mappedBy="CathegorieDepense", orphanRemoval=true,cascade={"persist"})
      */
-    private $depenses;
+    private Collection|Depenses|null $depenses;
 
     public function __construct()
     {

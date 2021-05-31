@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\DepensesRepository;
+use DateTimeImmutable;
+use DateTimeInterface;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -15,34 +17,34 @@ class Depenses
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
      */
-    private $id;
+    private ?int $id;
 
     /**
      * @ORM\Column(type="float")
      */
-    private $montant;
+    private float $montant;
 
     /**
      * @ORM\Column(type="date")
      */
-    private $datePaiement;
+    private ?DateTimeInterface $datePaiement;
 
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $beneficiaire;
+    private ?string $beneficiaire;
 
     /**
      * @ORM\ManyToOne(targetEntity=Members::class, inversedBy="Depenses", cascade={"persist"})
      * @ORM\JoinColumn(nullable=false)
      */
-    private $member;
+    private ?Members $member;
 
     /**
      * @ORM\ManyToOne(targetEntity=CathegoriesDepenses::class, inversedBy="depenses", cascade={"persist"})
      * @ORM\JoinColumn(nullable=false)
      */
-    private $CathegorieDepense;
+    private ?CathegoriesDepenses $CathegorieDepense;
 
     public function getId(): ?int
     {

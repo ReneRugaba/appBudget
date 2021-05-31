@@ -21,7 +21,7 @@ class DepensesTest extends KernelTestCase
 
     public function testGetterSetterDatePaiement(){
         $depense=$this->getDepenses(100.3,new DateTime(),null,new Members());
-        $this->assertEquals("24 05 2021",$depense->getDatePaiement()->format("d m Y"),"error: testGetterSetterDatePaiement()");
+        $this->assertEquals((new DateTime())->format("d m Y"),$depense->getDatePaiement()->format("d m Y"),"error: testGetterSetterDatePaiement()");
     }
 
     public function testGetterSetterBeneficaire(){

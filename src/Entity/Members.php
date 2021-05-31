@@ -18,32 +18,32 @@ class Members extends User
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
      */
-    private $id;
+    private ?int $id;
 
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $nom;
+    private ?string $nom;
 
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $prenom;
+    private ?string $prenom;
 
     /**
      * @ORM\OneToMany(targetEntity=Revenu::class, mappedBy="Member", orphanRemoval=true, cascade={"persist"})
      */
-    private $Revenu;
+    private Collection|Revenu|null $Revenu;
 
     /**
      * @ORM\OneToMany(targetEntity=Depenses::class, mappedBy="member", orphanRemoval=true, cascade={"persist"})
      */
-    private $Depenses;
+    private Collection|Depenses|null $Depenses;
 
     /**
      * @ORM\OneToMany(targetEntity=Soldes::class, mappedBy="member", orphanRemoval=true, cascade={"persist"})
      */
-    private $soldes;
+    private Collection|Soldes|null $soldes;
 
     public function __construct()
     {

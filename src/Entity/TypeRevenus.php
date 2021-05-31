@@ -17,17 +17,17 @@ class TypeRevenus
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
      */
-    private $id;
+    private ?int $id;
 
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $nom;
+    private ?string $nom;
 
     /**
      * @ORM\OneToMany(targetEntity=Revenu::class, mappedBy="typeRevenu", orphanRemoval=true,cascade={"persist"})
      */
-    private $Revenu;
+    private Collection|null $Revenu;
 
     public function __construct()
     {
@@ -54,12 +54,12 @@ class TypeRevenus
     /**
      * @return Collection|Montant[]
      */
-    public function getRevenu(): Collection
+    public function getRevenu(): ?Collection
     {
         return $this->Revenu;
     }
 
-    public function addRevenu(Revenu $revenu): self
+    public function addRevenu(?Revenu $revenu): self
     {
         if (!$this->Revenu->contains($revenu)) {
             $this->Revenu[] = $revenu;
@@ -69,7 +69,7 @@ class TypeRevenus
         return $this;
     }
 
-    public function removeRevenu(Revenu $revenu): self
+    public function removeRevenu(?Revenu $revenu): self
     {
         if ($this->Member->removeElement($revenu)) {
             // set the owning side to null (unless already changed)
