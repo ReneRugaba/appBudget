@@ -54,7 +54,7 @@ class Soldes
         return $this->RevenuTotal;
     }
 
-    public function setRevenuTotal(float $RevenuTotal): self
+    public function setRevenuTotal(?float $RevenuTotal): self
     {
         $this->RevenuTotal = $RevenuTotal;
 
@@ -66,7 +66,7 @@ class Soldes
         return $this->depenseTotal;
     }
 
-    public function setDepenseTotal(float $depenseTotal): self
+    public function setDepenseTotal(?float $depenseTotal): self
     {
         $this->depenseTotal = $depenseTotal;
 
@@ -78,7 +78,7 @@ class Soldes
         return $this->dateDebut;
     }
 
-    public function setDateDebut(\DateTimeInterface $dateDebut): self
+    public function setDateDebut(?\DateTimeInterface $dateDebut): self
     {
         $this->dateDebut = $dateDebut;
 
